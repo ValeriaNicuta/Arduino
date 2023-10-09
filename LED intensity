@@ -1,22 +1,12 @@
 int led_pin = 9;
-int senzor_pin= A0;
 int value = 0;
-int pwm = 0;
 
 void setup(){
-  pinMode(senzor_pin,INPUT);
   pinMode(led_pin, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop(){
-  value=analogRead(senzor_pin);
-  pwm=map(value,0,700,255,0);
-  analogWrite(led_pin,pwm);
-  Serial.print("senzor: ");
-  Serial.println(value);
-  Serial.print("pwm: ");
-  Serial.println(pwm);
   if(Serial.available()>0){
     value=Serial.read();
     Serial.println(value);
