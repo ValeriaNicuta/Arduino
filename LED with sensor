@@ -10,12 +10,16 @@ Serial.begin(9600);
 }
 
 void loop(){
-  value=analogRead(A0); 
+value=analogRead(senzor_pin);
+  pwm=map(value,0,700,255,0);
+  analogWrite(led_pin,pwm);
+  Serial.print("senzor: ");
   Serial.println(value);
+  Serial.print("pwm: ");
+  Serial.println(pwm);
 
   if(value>=200)
     digitalWrite(led_pin,HIGH);
-  
   else
     digitalWrite(led_pin,LOW);
 }
