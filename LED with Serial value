@@ -1,0 +1,23 @@
+int led_pin2 = 7; 
+int valoare;
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(led_pin2,OUTPUT);
+Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if(Serial.available()>0){
+     valoare=Serial.read();
+     Serial.println(valoare);
+     delay(100);
+   }
+  if(valoare=='1'){
+    digitalWrite(led_pin2,HIGH);
+  }
+  else if(valoare=='2'){
+    digitalWrite(led_pin2,LOW);
+  }
+}
