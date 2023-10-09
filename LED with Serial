@@ -1,0 +1,26 @@
+int led_pin1 = 4; //led pe placă
+int led_pin2 = 7; //alt pin digital pentru un led extern
+int valoare=0;
+void setup() {
+pinMode(led_pin1,INPUT_PULLUP); // setează pinul ca pin de ieşire
+pinMode(led_pin2,OUTPUT);
+Serial.begin(9600);
+}
+void loop()
+ { 
+   if(digitalRead(led_pin1)==HIGH)
+   {
+     digitalWrite(led_pin2,LOW);
+     if(valoare==0){
+      valoare=1;
+       Serial.println("LED STINS");
+     }
+   }
+   else
+   {
+     digitalWrite(led_pin2,HIGH);
+     if(valoare==1){
+     valoare=0;
+     Serial.println("LED APRINS");
+     }
+  }
