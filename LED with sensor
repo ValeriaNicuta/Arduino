@@ -1,0 +1,21 @@
+int led_pin = 9;
+int senzor_pin = A0;
+int value = 0;
+int pwm = 0;
+
+void setup(){
+pinMode(senzor_pin,INPUT);
+pinMode(led_pin, OUTPUT);
+Serial.begin(9600);
+}
+
+void loop(){
+  value=analogRead(A0); 
+  Serial.println(value);
+
+  if(value>=200)
+    digitalWrite(led_pin,HIGH);
+  
+  else
+    digitalWrite(led_pin,LOW);
+}
